@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/JapaneseDictionary.iml" filepath="$PROJECT_DIR$/JapaneseDictionary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Ikue.iml" filepath="$PROJECT_DIR$/Ikue.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
