@@ -24,13 +24,13 @@ import com.ikue.japanesedictionary.database.DictionaryDbHelper;
 import com.ikue.japanesedictionary.database.SearchDatabaseTask;
 import com.ikue.japanesedictionary.interfaces.SearchAsyncCallbacks;
 import com.ikue.japanesedictionary.models.DictionaryListEntry;
+import com.ikue.japanesedictionary.utils.SearchTypes;
 import com.ikue.japanesedictionary.utils.SearchUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.ikue.japanesedictionary.utils.GlobalConstants.SearchTypes.ENGLISH_TYPE;
-import static com.ikue.japanesedictionary.utils.GlobalConstants.SearchTypes.ROMAJI_TYPE;
+import static com.ikue.japanesedictionary.utils.SearchTypes.*;
 
 public class SearchResultFragment extends Fragment implements SearchAsyncCallbacks {
     private static final String ARG_SEARCH_TERM = "SEARCH_TERM";
@@ -42,7 +42,7 @@ public class SearchResultFragment extends Fragment implements SearchAsyncCallbac
     private SearchResultAdapter adapter;
     private SearchAsyncCallbacks listener;
 
-    private static int searchType;
+    private static SearchTypes searchType;
     private static String searchQuery;
 
     private RecyclerView recyclerView;
@@ -171,25 +171,25 @@ public class SearchResultFragment extends Fragment implements SearchAsyncCallbac
         // First make sure the view is not null
         if (getView() != null) {
             // Give the user the option to show Romaji results instead
-            if (searchType == ENGLISH_TYPE) {
+            if (searchType == ENGLISH) {
                 Snackbar.make(getView(), R.string.search_view_snackbar_english, Snackbar.LENGTH_INDEFINITE)
                         .setAction(R.string.search_view_snackbar_english_action, new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                searchType = ROMAJI_TYPE;
+                                searchType = ROMAJI;
                                 new SearchDatabaseTask(listener, helper, searchQuery, searchType).execute();
                             }
                         }).show();
 
                 // Give the user the option to show English results instead, due to our naive
                 // classification of Romaji
-            } else if (searchType == ROMAJI_TYPE) {
+            } else if (searchType == ROMAJI) {
                 // TODO: Show the actual term the user searched for (Hiragana or Katakana)
                 Snackbar.make(getView(), R.string.search_view_snackbar_romaji, Snackbar.LENGTH_INDEFINITE)
                         .setAction(R.string.search_view_snackbar_romaji_action, new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                searchType = ENGLISH_TYPE;
+                                searchType = ENGLISH;
                                 new SearchDatabaseTask(listener, helper, searchQuery, searchType).execute();
                             }
                         }).show();

@@ -4,6 +4,7 @@ import android.os.AsyncTask;
 
 import com.ikue.japanesedictionary.interfaces.SearchAsyncCallbacks;
 import com.ikue.japanesedictionary.models.DictionaryListEntry;
+import com.ikue.japanesedictionary.utils.SearchTypes;
 
 import java.util.List;
 
@@ -13,10 +14,10 @@ public class SearchDatabaseTask extends AsyncTask<Void, Void, List<DictionaryLis
     private SearchAsyncCallbacks listener;
     private DictionaryDbHelper helper;
     private String searchQuery;
-    private int searchType;
+    private SearchTypes searchType;
 
     public SearchDatabaseTask(SearchAsyncCallbacks listener, DictionaryDbHelper helper,
-                              String searchQuery, int searchType) {
+                              String searchQuery, SearchTypes searchType) {
         this.listener = listener;
         this.helper = helper;
         this.searchQuery = searchQuery;

@@ -1,11 +1,11 @@
 package com.ikue.japanesedictionary;
 
-import com.ikue.japanesedictionary.utils.GlobalConstants;
 import com.ikue.japanesedictionary.utils.SearchUtils;
 
 import org.junit.Assert;
 import org.junit.Test;
 
+import static com.ikue.japanesedictionary.utils.SearchTypes.*;
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertFalse;
 import static junit.framework.Assert.assertTrue;
@@ -13,91 +13,91 @@ import static junit.framework.Assert.assertTrue;
 public class SearchUtilsUnitTest {
     @Test
     public void testGetSearchType_english() {
-        assertEquals(SearchUtils.getSearchType("blast"), GlobalConstants.SearchTypes.ENGLISH_TYPE);
-        assertEquals(SearchUtils.getSearchType("shot"), GlobalConstants.SearchTypes.ENGLISH_TYPE);
-        assertEquals(SearchUtils.getSearchType("parents"), GlobalConstants.SearchTypes.ENGLISH_TYPE);
-        assertEquals(SearchUtils.getSearchType("wasp"), GlobalConstants.SearchTypes.ENGLISH_TYPE);
-        assertEquals(SearchUtils.getSearchType("plastic"), GlobalConstants.SearchTypes.ENGLISH_TYPE);
-        assertEquals(SearchUtils.getSearchType("book"), GlobalConstants.SearchTypes.ENGLISH_TYPE);
-        assertEquals(SearchUtils.getSearchType("library"), GlobalConstants.SearchTypes.ENGLISH_TYPE);
-        assertEquals(SearchUtils.getSearchType("computer"), GlobalConstants.SearchTypes.ENGLISH_TYPE);
-        assertEquals(SearchUtils.getSearchType("speaker"), GlobalConstants.SearchTypes.ENGLISH_TYPE);
-        assertEquals(SearchUtils.getSearchType("lamp"), GlobalConstants.SearchTypes.ENGLISH_TYPE);
-        assertEquals(SearchUtils.getSearchType("deodorant"), GlobalConstants.SearchTypes.ENGLISH_TYPE);
-        assertEquals(SearchUtils.getSearchType("emulator"), GlobalConstants.SearchTypes.ENGLISH_TYPE);
-        assertEquals(SearchUtils.getSearchType("monitor"), GlobalConstants.SearchTypes.ENGLISH_TYPE);
-        assertEquals(SearchUtils.getSearchType("mug"), GlobalConstants.SearchTypes.ENGLISH_TYPE);
-        assertEquals(SearchUtils.getSearchType("calender"), GlobalConstants.SearchTypes.ENGLISH_TYPE);
+        assertEquals(SearchUtils.getSearchType("blast"), ENGLISH);
+        assertEquals(SearchUtils.getSearchType("shot"), ENGLISH);
+        assertEquals(SearchUtils.getSearchType("parents"), ENGLISH);
+        assertEquals(SearchUtils.getSearchType("wasp"), ENGLISH);
+        assertEquals(SearchUtils.getSearchType("plastic"), ENGLISH);
+        assertEquals(SearchUtils.getSearchType("book"), ENGLISH);
+        assertEquals(SearchUtils.getSearchType("library"), ENGLISH);
+        assertEquals(SearchUtils.getSearchType("computer"), ENGLISH);
+        assertEquals(SearchUtils.getSearchType("speaker"), ENGLISH);
+        assertEquals(SearchUtils.getSearchType("lamp"), ENGLISH);
+        assertEquals(SearchUtils.getSearchType("deodorant"), ENGLISH);
+        assertEquals(SearchUtils.getSearchType("emulator"), ENGLISH);
+        assertEquals(SearchUtils.getSearchType("monitor"), ENGLISH);
+        assertEquals(SearchUtils.getSearchType("mug"), ENGLISH);
+        assertEquals(SearchUtils.getSearchType("calender"), ENGLISH);
 
         // The following entries will be converted to Romaji
-        assertFalse(SearchUtils.getSearchType("home") == GlobalConstants.SearchTypes.ENGLISH_TYPE);
-        assertFalse(SearchUtils.getSearchType("date") == GlobalConstants.SearchTypes.ENGLISH_TYPE);
-        assertFalse(SearchUtils.getSearchType("banana") == GlobalConstants.SearchTypes.ENGLISH_TYPE);
-        assertFalse(SearchUtils.getSearchType("woman") == GlobalConstants.SearchTypes.ENGLISH_TYPE);
-        assertFalse(SearchUtils.getSearchType("man") == GlobalConstants.SearchTypes.ENGLISH_TYPE);
-        assertFalse(SearchUtils.getSearchType("penguin") == GlobalConstants.SearchTypes.ENGLISH_TYPE);
-        assertFalse(SearchUtils.getSearchType("tea") == GlobalConstants.SearchTypes.ENGLISH_TYPE);
+        assertFalse(SearchUtils.getSearchType("home") == ENGLISH);
+        assertFalse(SearchUtils.getSearchType("date") == ENGLISH);
+        assertFalse(SearchUtils.getSearchType("banana") == ENGLISH);
+        assertFalse(SearchUtils.getSearchType("woman") == ENGLISH);
+        assertFalse(SearchUtils.getSearchType("man") == ENGLISH);
+        assertFalse(SearchUtils.getSearchType("penguin") == ENGLISH);
+        assertFalse(SearchUtils.getSearchType("tea") == ENGLISH);
     }
 
     @Test
     public void testGetSearchType_romaji() {
-        assertEquals(SearchUtils.getSearchType("tabemono"), GlobalConstants.SearchTypes.ROMAJI_TYPE);
-        assertEquals(SearchUtils.getSearchType("honmono"), GlobalConstants.SearchTypes.ROMAJI_TYPE);
-        assertEquals(SearchUtils.getSearchType("date"), GlobalConstants.SearchTypes.ROMAJI_TYPE);
-        assertEquals(SearchUtils.getSearchType("home"), GlobalConstants.SearchTypes.ROMAJI_TYPE);
-        assertEquals(SearchUtils.getSearchType("toshokan"), GlobalConstants.SearchTypes.ROMAJI_TYPE);
-        assertEquals(SearchUtils.getSearchType("iku"), GlobalConstants.SearchTypes.ROMAJI_TYPE);
-        assertEquals(SearchUtils.getSearchType("hontou"), GlobalConstants.SearchTypes.ROMAJI_TYPE);
-        assertEquals(SearchUtils.getSearchType("ru-ku"), GlobalConstants.SearchTypes.ROMAJI_TYPE);
-        assertEquals(SearchUtils.getSearchType("ikue"), GlobalConstants.SearchTypes.ROMAJI_TYPE);
-        assertEquals(SearchUtils.getSearchType("enryo"), GlobalConstants.SearchTypes.ROMAJI_TYPE);
-        assertEquals(SearchUtils.getSearchType("watashi"), GlobalConstants.SearchTypes.ROMAJI_TYPE);
-        assertEquals(SearchUtils.getSearchType("kyanseru"), GlobalConstants.SearchTypes.ROMAJI_TYPE);
+        assertEquals(SearchUtils.getSearchType("tabemono"), ROMAJI);
+        assertEquals(SearchUtils.getSearchType("honmono"), ROMAJI);
+        assertEquals(SearchUtils.getSearchType("date"), ROMAJI);
+        assertEquals(SearchUtils.getSearchType("home"), ROMAJI);
+        assertEquals(SearchUtils.getSearchType("toshokan"), ROMAJI);
+        assertEquals(SearchUtils.getSearchType("iku"), ROMAJI);
+        assertEquals(SearchUtils.getSearchType("hontou"), ROMAJI);
+        assertEquals(SearchUtils.getSearchType("ru-ku"), ROMAJI);
+        assertEquals(SearchUtils.getSearchType("ikue"), ROMAJI);
+        assertEquals(SearchUtils.getSearchType("enryo"), ROMAJI);
+        assertEquals(SearchUtils.getSearchType("watashi"), ROMAJI);
+        assertEquals(SearchUtils.getSearchType("kyanseru"), ROMAJI);
     }
 
     @Test
     public void testGetSearchType_kana() {
-        assertEquals(SearchUtils.getSearchType("たべもの"), GlobalConstants.SearchTypes.KANA_TYPE);
-        assertEquals(SearchUtils.getSearchType("ほんもの"), GlobalConstants.SearchTypes.KANA_TYPE);
-        assertEquals(SearchUtils.getSearchType("だて"), GlobalConstants.SearchTypes.KANA_TYPE);
-        assertEquals(SearchUtils.getSearchType("ほめ"), GlobalConstants.SearchTypes.KANA_TYPE);
-        assertEquals(SearchUtils.getSearchType("としょかん"), GlobalConstants.SearchTypes.KANA_TYPE);
-        assertEquals(SearchUtils.getSearchType("いく"), GlobalConstants.SearchTypes.KANA_TYPE);
-        assertEquals(SearchUtils.getSearchType("ほんとう"), GlobalConstants.SearchTypes.KANA_TYPE);
-        assertEquals(SearchUtils.getSearchType("るーく"), GlobalConstants.SearchTypes.KANA_TYPE);
-        assertEquals(SearchUtils.getSearchType("いくえ"), GlobalConstants.SearchTypes.KANA_TYPE);
-        assertEquals(SearchUtils.getSearchType("えんりょ"), GlobalConstants.SearchTypes.KANA_TYPE);
-        assertEquals(SearchUtils.getSearchType("わたし"), GlobalConstants.SearchTypes.KANA_TYPE);
-        assertEquals(SearchUtils.getSearchType("きゃんせる"), GlobalConstants.SearchTypes.KANA_TYPE);
-        assertEquals(SearchUtils.getSearchType("ケーキ"), GlobalConstants.SearchTypes.KANA_TYPE);
-        assertEquals(SearchUtils.getSearchType("ダンス"), GlobalConstants.SearchTypes.KANA_TYPE);
-        assertEquals(SearchUtils.getSearchType("ポケモン"), GlobalConstants.SearchTypes.KANA_TYPE);
-        assertEquals(SearchUtils.getSearchType("バナナ"), GlobalConstants.SearchTypes.KANA_TYPE);
-        assertEquals(SearchUtils.getSearchType("モテる"), GlobalConstants.SearchTypes.KANA_TYPE);
-        assertEquals(SearchUtils.getSearchType("サボる"), GlobalConstants.SearchTypes.KANA_TYPE);
-        assertEquals(SearchUtils.getSearchType("モルモット"), GlobalConstants.SearchTypes.KANA_TYPE);
+        assertEquals(SearchUtils.getSearchType("たべもの"), KANA);
+        assertEquals(SearchUtils.getSearchType("ほんもの"), KANA);
+        assertEquals(SearchUtils.getSearchType("だて"), KANA);
+        assertEquals(SearchUtils.getSearchType("ほめ"), KANA);
+        assertEquals(SearchUtils.getSearchType("としょかん"), KANA);
+        assertEquals(SearchUtils.getSearchType("いく"), KANA);
+        assertEquals(SearchUtils.getSearchType("ほんとう"), KANA);
+        assertEquals(SearchUtils.getSearchType("るーく"), KANA);
+        assertEquals(SearchUtils.getSearchType("いくえ"), KANA);
+        assertEquals(SearchUtils.getSearchType("えんりょ"), KANA);
+        assertEquals(SearchUtils.getSearchType("わたし"), KANA);
+        assertEquals(SearchUtils.getSearchType("きゃんせる"), KANA);
+        assertEquals(SearchUtils.getSearchType("ケーキ"), KANA);
+        assertEquals(SearchUtils.getSearchType("ダンス"), KANA);
+        assertEquals(SearchUtils.getSearchType("ポケモン"), KANA);
+        assertEquals(SearchUtils.getSearchType("バナナ"), KANA);
+        assertEquals(SearchUtils.getSearchType("モテる"), KANA);
+        assertEquals(SearchUtils.getSearchType("サボる"), KANA);
+        assertEquals(SearchUtils.getSearchType("モルモット"), KANA);
 
-        assertFalse(SearchUtils.getSearchType("食べ物") == GlobalConstants.SearchTypes.KANA_TYPE);
-        assertFalse(SearchUtils.getSearchType("本物") == GlobalConstants.SearchTypes.KANA_TYPE);
-        assertFalse(SearchUtils.getSearchType("行く") == GlobalConstants.SearchTypes.KANA_TYPE);
-        assertFalse(SearchUtils.getSearchType("あああああああ行") == GlobalConstants.SearchTypes.KANA_TYPE);
-        assertFalse(SearchUtils.getSearchType("ああああ食べるあああ") == GlobalConstants.SearchTypes.KANA_TYPE);
+        assertFalse(SearchUtils.getSearchType("食べ物") == KANA);
+        assertFalse(SearchUtils.getSearchType("本物") == KANA);
+        assertFalse(SearchUtils.getSearchType("行く") == KANA);
+        assertFalse(SearchUtils.getSearchType("あああああああ行") == KANA);
+        assertFalse(SearchUtils.getSearchType("ああああ食べるあああ") == KANA);
     }
 
     @Test
     public void testGetSearchType_kanji() {
-        assertEquals(SearchUtils.getSearchType("食べ物"), GlobalConstants.SearchTypes.KANJI_TYPE);
-        assertEquals(SearchUtils.getSearchType("本当"), GlobalConstants.SearchTypes.KANJI_TYPE);
-        assertEquals(SearchUtils.getSearchType("伊達"), GlobalConstants.SearchTypes.KANJI_TYPE);
-        assertEquals(SearchUtils.getSearchType("褒め"), GlobalConstants.SearchTypes.KANJI_TYPE);
-        assertEquals(SearchUtils.getSearchType("図書館"), GlobalConstants.SearchTypes.KANJI_TYPE);
-        assertEquals(SearchUtils.getSearchType("行く"), GlobalConstants.SearchTypes.KANJI_TYPE);
-        assertEquals(SearchUtils.getSearchType("本物"), GlobalConstants.SearchTypes.KANJI_TYPE);
-        assertEquals(SearchUtils.getSearchType("幾重"), GlobalConstants.SearchTypes.KANJI_TYPE);
-        assertEquals(SearchUtils.getSearchType("育英"), GlobalConstants.SearchTypes.KANJI_TYPE);
-        assertEquals(SearchUtils.getSearchType("遠慮"), GlobalConstants.SearchTypes.KANJI_TYPE);
-        assertEquals(SearchUtils.getSearchType("私"), GlobalConstants.SearchTypes.KANJI_TYPE);
-        assertEquals(SearchUtils.getSearchType("来る"), GlobalConstants.SearchTypes.KANJI_TYPE);
+        assertEquals(SearchUtils.getSearchType("食べ物"), KANJI);
+        assertEquals(SearchUtils.getSearchType("本当"), KANJI);
+        assertEquals(SearchUtils.getSearchType("伊達"), KANJI);
+        assertEquals(SearchUtils.getSearchType("褒め"), KANJI);
+        assertEquals(SearchUtils.getSearchType("図書館"), KANJI);
+        assertEquals(SearchUtils.getSearchType("行く"), KANJI);
+        assertEquals(SearchUtils.getSearchType("本物"), KANJI);
+        assertEquals(SearchUtils.getSearchType("幾重"), KANJI);
+        assertEquals(SearchUtils.getSearchType("育英"), KANJI);
+        assertEquals(SearchUtils.getSearchType("遠慮"), KANJI);
+        assertEquals(SearchUtils.getSearchType("私"), KANJI);
+        assertEquals(SearchUtils.getSearchType("来る"), KANJI);
     }
 
     @Test

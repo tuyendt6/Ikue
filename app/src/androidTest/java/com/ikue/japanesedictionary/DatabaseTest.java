@@ -7,7 +7,7 @@ import android.support.test.runner.AndroidJUnit4;
 import com.ikue.japanesedictionary.database.DictionaryDbHelper;
 import com.ikue.japanesedictionary.models.DictionaryEntry;
 import com.ikue.japanesedictionary.models.DictionaryListEntry;
-import com.ikue.japanesedictionary.utils.GlobalConstants.SearchTypes;
+import com.ikue.japanesedictionary.utils.SearchTypes;
 
 import org.junit.After;
 import org.junit.Before;
@@ -164,7 +164,7 @@ public class DatabaseTest {
 
     @Test
     public void testSearchingDictionary_english() {
-        List<DictionaryListEntry> entries = helper.searchDictionary("house", SearchTypes.ENGLISH_TYPE);
+        List<DictionaryListEntry> entries = helper.searchDictionary("house", SearchTypes.ENGLISH);
 
         assertFalse(entries.isEmpty());
 
@@ -176,7 +176,7 @@ public class DatabaseTest {
 
     @Test
     public void testSearchingDictionary_romaji() {
-        List<DictionaryListEntry> entries = helper.searchDictionary("tabemono", SearchTypes.ROMAJI_TYPE);
+        List<DictionaryListEntry> entries = helper.searchDictionary("tabemono", SearchTypes.ROMAJI);
 
         assertFalse(entries.isEmpty());
 
@@ -188,7 +188,7 @@ public class DatabaseTest {
 
     @Test
     public void testSearchingDictionary_kana() {
-        List<DictionaryListEntry> entries = helper.searchDictionary("としょかん", SearchTypes.KANA_TYPE);
+        List<DictionaryListEntry> entries = helper.searchDictionary("としょかん", SearchTypes.KANA);
 
         assertFalse(entries.isEmpty());
 
@@ -200,7 +200,7 @@ public class DatabaseTest {
 
     @Test
     public void testSearchingDictionary_kanji() {
-        List<DictionaryListEntry> entries = helper.searchDictionary("学生", SearchTypes.KANJI_TYPE);
+        List<DictionaryListEntry> entries = helper.searchDictionary("学生", SearchTypes.KANJI);
 
         assertFalse(entries.isEmpty());
 

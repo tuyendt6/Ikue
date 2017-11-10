@@ -3,12 +3,13 @@ package com.ikue.japanesedictionary.utils;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static com.ikue.japanesedictionary.utils.GlobalConstants.SearchTypes.*;
+import static com.ikue.japanesedictionary.utils.SearchTypes.*;
+
 
 public class SearchUtils {
 
     // Get what type the search term is. Can either be Kanji, Kana, Romaji, or English.
-    public static int getSearchType(String searchTerm) {
+    public static SearchTypes getSearchType(String searchTerm) {
         boolean containsKana = false;
 
         // Check every character of the string
@@ -16,7 +17,7 @@ public class SearchUtils {
             // If the current character is a Kanji (or Chinese/Korean character)
             if (Character.UnicodeBlock.of(c) == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS) {
                 // Once we find a single Kanji character, we know to search the Kanji Element
-                return KANJI_TYPE;
+                return KANJI;
                 // If the current character is a Hiragana or Katakana character
             } else if (Character.UnicodeBlock.of(c) == Character.UnicodeBlock.HIRAGANA
                     || Character.UnicodeBlock.of(c) == Character.UnicodeBlock.KATAKANA) {
@@ -28,7 +29,7 @@ public class SearchUtils {
         // If we have parsed the whole string, have not encountered a Kanji character, and there
         // is at least one Kana character in the string then we know to search the Reading Element
         if (containsKana) {
-            return KANA_TYPE;
+            return KANA;
         } else {
             // False because we don't care about obsolete Kana
             WanaKanaJava wk = new WanaKanaJava(false);
@@ -39,13 +40,13 @@ public class SearchUtils {
                 // the user meant to search in English (or mistyped when using Romaji)
                 if (Character.UnicodeBlock.of(c) != Character.UnicodeBlock.HIRAGANA
                         && Character.UnicodeBlock.of(c) != Character.UnicodeBlock.KATAKANA) {
-                    return ENGLISH_TYPE;
+                    return ENGLISH;
                 }
             }
             // If every character successfully converted to Romaji, then we assume the user
             // meant to search in Romaji. (Naive!)
             // TODO: Additional checks before assuming Romaji
-            return ROMAJI_TYPE;
+            return ROMAJI;
         }
     }
 

@@ -26,6 +26,7 @@ import com.ikue.japanesedictionary.models.KanjiElement;
 import com.ikue.japanesedictionary.models.Priority;
 import com.ikue.japanesedictionary.models.ReadingElement;
 import com.ikue.japanesedictionary.models.SenseElement;
+import com.ikue.japanesedictionary.utils.SearchTypes;
 import com.ikue.japanesedictionary.utils.SearchUtils;
 import com.ikue.japanesedictionary.utils.WanaKanaJava;
 import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
@@ -34,10 +35,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import static com.ikue.japanesedictionary.utils.GlobalConstants.SearchTypes.ENGLISH_TYPE;
-import static com.ikue.japanesedictionary.utils.GlobalConstants.SearchTypes.KANA_TYPE;
-import static com.ikue.japanesedictionary.utils.GlobalConstants.SearchTypes.KANJI_TYPE;
-import static com.ikue.japanesedictionary.utils.GlobalConstants.SearchTypes.ROMAJI_TYPE;
 import static com.ikue.japanesedictionary.utils.DbUtils.formatString;
 import static com.ikue.japanesedictionary.utils.DbUtils.getSearchByEnglishQuery;
 import static com.ikue.japanesedictionary.utils.DbUtils.getSearchByKanaQuery;
@@ -76,7 +73,7 @@ public class DictionaryDbHelper extends SQLiteAssetHelper {
     }
 
     // Search the dictionary for a given term
-    public List<DictionaryListEntry> searchDictionary(String searchTerm, int searchType) {
+    public List<DictionaryListEntry> searchDictionary(String searchTerm, SearchTypes searchType) {
         SQLiteDatabase db = getReadableDatabase();
         String query;
 
@@ -96,10 +93,10 @@ public class DictionaryDbHelper extends SQLiteAssetHelper {
         }
 
         switch (searchType) {
-            case KANA_TYPE:
+            case KANA:
                 query = getSearchByKanaQuery(isWildcardSearch);
                 break;
-            case ROMAJI_TYPE:
+            case ROMAJI:
                 // TODO: Case insensitive Kana search. Show Hiragana and Katakana results
                 WanaKanaJava wanaKanaJava = new WanaKanaJava(false);
 
@@ -116,10 +113,10 @@ public class DictionaryDbHelper extends SQLiteAssetHelper {
                 }
                 query = getSearchByKanaQuery(isWildcardSearch);
                 break;
-            case KANJI_TYPE:
+            case KANJI:
                 query = getSearchByKanjiQuery(isWildcardSearch);
                 break;
-            case ENGLISH_TYPE:
+            case ENGLISH:
                 query = getSearchByEnglishQuery(isWildcardSearch);
                 break;
             default:
